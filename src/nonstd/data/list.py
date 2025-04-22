@@ -63,7 +63,7 @@ class List[A]:
     def sorted(self, fn):
         ys = copy.copy(self.xs)
         ys.sort(key=fn)
-        return ys
+        return List(ys)
 
     @staticmethod
     def concat[X](xss: "List[List[X]]") -> "List[X]":

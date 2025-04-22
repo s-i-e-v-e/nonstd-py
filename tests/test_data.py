@@ -13,7 +13,7 @@ def test_list():
 def test_list_sorting():
     xs = List([8, 7, 4])
     ys = xs.sorted(lambda x: x)
-    assert ys == [4, 7, 8]
+    assert ys.xs == [4, 7, 8]
 
 
 def test_maybe():

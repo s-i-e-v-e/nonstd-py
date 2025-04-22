@@ -3,6 +3,7 @@ import copy
 from nonstd.data.__internal import *
 from nonstd.data.maybe import Maybe
 
+
 @dataclass
 class List[A]:
     xs: list[A]
@@ -24,6 +25,9 @@ class List[A]:
 
     def head(self):
         return Maybe(self.xs[0])
+
+    def tail(self):
+        return List(self.xs[1:])
 
     def last(self):
         return Maybe(self.xs[-1])
@@ -56,8 +60,13 @@ class List[A]:
         ys.reverse()
         return List(ys)
 
+    def sorted(self, fn):
+        ys = copy.copy(self.xs)
+        ys.sort(key=fn)
+        return ys
+
     @staticmethod
-    def concat[X](xss: 'List[List[X]]') -> 'List[X]':
+    def concat[X](xss: "List[List[X]]") -> "List[X]":
         ys = []
         for xs in xss:
             ys.extend(xs)
